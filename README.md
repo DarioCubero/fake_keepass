@@ -1,3 +1,16 @@
+# Librerías Node
+Bootstrap
+```
+npm i bootstrap
+
+```
+Nodemon 
+
+```
+npm install nodemon -g
+```
+
+
 # AA 1EV DWEC SV ONLINE
 
 📖 Para el desarrollo de la primera actividad de aprendizaje, es recomendable utilizar este esqueleto como base del proyecto.
