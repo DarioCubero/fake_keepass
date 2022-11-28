@@ -1,54 +1,80 @@
-.boton_top1{
-    background-color: #008CFF;
-    color:antiquewhite;
-    border: 1px solid black;
-    border-radius: 10px;
+body{
+    padding: 100px;
+}
 
-    padding-left: 15px;
-    padding-right: 15px;
-    
+/* quitar el punto de las categorias */
+ul {
+    list-style-type: none;
 }
-.boton_top2{
-    border: 1px solid black;
-    border-radius: 10px;
 
-    padding-left: 15px;
-    padding-right: 15px;
+/* elementos li */
+#categorias li{
+    border-style: groove;
+    /* border-style: ridge; */
+    /* border-style: inset; */
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
 }
-.row{
-    background-color: #008CFF;
-}
-section{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
 
-    
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+ul#categorias {
+    padding: 0px;
 }
-section .botones{
-    width: 100%;
-    height: 60px;
-    margin-top: 20px;
+
+#categorias li:hover{
+    background-color: #000000;
+    color: white;
 }
-section .categorias{
-    width: 30%;
-    /*height: 300px;*/
-    border: 1px solid black;
+
+/* .boton_top1 {
+  background-color: #008cff;
+  color: antiquewhite;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  padding-left: 15px;
+  padding-right: 15px;
 }
-section .sitios{
-    width: 70%;
-    height: 300px;
-    border: 1px solid black;
+.boton_top2 {
+  border: 1px solid black;
+  border-radius: 10px;
+
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.col-sm{
-    border: 1px solid black;
-    text-align: center;
-    color:white;
+.row {
+  background-color: #008cff;
 }
-.tituloC{
-    text-align: center;
-    color: #008CFF;
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
+section .botones {
+  width: 100%;
+  height: 60px;
+  margin-top: 20px;
+}
+section .categorias {
+  width: 30%;
+  border: 1px solid black;
+}
+section .sitios {
+  width: 70%;
+  height: 300px;
+  border: 1px solid black;
+}
+.col-sm {
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+}
+.tituloC {
+  text-align: center;
+  color: #008cff;
+} */

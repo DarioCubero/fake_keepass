@@ -1,5 +1,6 @@
 const models = require("../../db/models")
 
+// LIST
 async function listCategories(req, res) {
   res.send(await models.Category.findAll())
 }
@@ -16,6 +17,7 @@ async function listCategorySites(req, res) {
     res.sendStatus(404)
 }
 
+// ADD
 async function addNewSite(req, res) {
   let result = await models.Site.build(req.body)
   result.categoryId = req.params.id
@@ -29,6 +31,7 @@ async function addNewCategory(req, res) {
   res.send(result)
 }
 
+// DELETE
 async function delSite(req, res) {
   let site = await models.Site.findByPk(req.params.id)
   if (!site)
@@ -48,6 +51,7 @@ async function delCategory(req, res) {
   res.sendStatus(200)
 }
 
+// ROUTES
 function init(app) {
   app.get('/categories/:id', listCategorySites)
   app.get('/categories',listCategories)
