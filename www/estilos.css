@@ -46,6 +46,7 @@ section .sitios{
 .col-sm{
     border: 1px solid black;
     text-align: center;
+    color:white;
 }
 .tituloC{
     text-align: center;
