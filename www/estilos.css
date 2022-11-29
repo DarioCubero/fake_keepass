@@ -27,6 +27,14 @@ ul#categorias {
     color: white;
 }
 
+.rowthead{
+  font-weight: bold;
+  font-size: 16px !important;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 /* .boton_top1 {
   background-color: #008cff;
   color: antiquewhite;
