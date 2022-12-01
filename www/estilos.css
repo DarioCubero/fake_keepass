@@ -2,15 +2,7 @@ body {
   padding: 100px;
 }
 
-.container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 /* tabla */
-
 tr.rowthead th {
   width: 100px !important;
 }
@@ -33,9 +25,15 @@ ul#categorias {
   padding: 0px;
 }
 
-/* elementos li */
-#categorias li {
-  border-style: groove; /* border-style: ridge; */ /* border-style: inset; */
+.own-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#categorias button {
+  border-style: groove;
   padding: 10px;
   border-width: 2px;
   border-style: solid;
@@ -47,26 +45,38 @@ ul#categorias {
   align-content: center;
   flex-direction: column;
 
-  -webkit-transition: width 1s ease-in-out;
-  -moz-transition: width 1s ease-in-out;
-  -o-transition: width 1s ease-in-out;
-  transition: width 1s ease-in-out;
-  transition: width 1s, height 1s, font-size 0.2s, background-color 1s,
-    transform 1s;
+  -webkit-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  -moz-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  -o-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  transition: width 1s ease-in-out, color 1s, font-size 1s;
+  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s,
+    transform 0.2s;
 }
 
-#categorias li:hover {
-  background-color: #0d6efd;
-  color: white;
-  -webkit-transition: width 1s ease-in-out;
-  -moz-transition: width 1s ease-in-out;
-  -o-transition: width 1s ease-in-out;
-  transition: width 1s ease-in-out;
-  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s
-    transform 1s;
+#categorias button:hover {
+  background-color: #0d6dfd6e;
+  color: black;
   font-size: 18px;
+  font-weight: bold;
+
+  -webkit-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  -moz-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  -o-transition: width 1s ease-in-out, color 1s, font-size 1s;
+  transition: width 1s ease-in-out, color 1s, font-size 1s;
+  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s,
+    transform 0.2s;
 }
 
-#categorias li:active {
-  background-color: #000000;
+#categorias button:active {
+  background-color: rgba(0, 0, 0, 0.452);
+}
+
+#categorias button.active:active {
+  background-color: rgba(0, 0, 0, 0.452);
+}
+
+#categorias button.active {
+  color: rgb(255, 255, 255) !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
 }

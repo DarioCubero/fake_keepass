@@ -1,11 +1,10 @@
 getCategories();
-
-// $(document).ready(function() {
-// document.querySelector("#categorias li").click(function(event) {
-//   console.log(":D");
-//     alert(event.target.id);
-// });
-// });
+ 
+$(document).ready(function() {
+  $("#categorias button").on("click",function(){
+    console.log("LOCOO");
+  });
+});
 
 // document.querySelectorAll("#categorias li").forEach(x => x.addEventListener("click", hellou);
 
@@ -26,13 +25,17 @@ function getCategories() {
   let busquedaCategorias = (data) => {
     data.forEach((category) => {
       let parent = document.getElementById("categorias");
-      let child = document.createElement("li");
-      child.innerText = category.name;
-      // child.id = category.id; //Añade el ID en cada elemento del LI.
-      child.addEventListener("click", function (event) {
+      let button = document.createElement("button")
+      button.classList.add("list-group-item", "list-group-item-action");
+      button.innerText = category.name;
+      // button.data-bs-toggle="list";
+      button.setAttribute('data-bs-toggle', 'list');
+      button.type="button";
+      // button.id = category.id; //Añade el ID en cada elemento del LI.
+      button.addEventListener("click", function (event) {
         getSitesByCategory(category.id);
       });
-      parent.appendChild(child);
+      parent.appendChild(button);
     });
   };
   fetch("http://localhost:3000/categories")
@@ -91,39 +94,11 @@ function getSitesByCategory(id) {
       // newCell = newRow.insertCell();
       // newCell.classList.add("align-middle");
 
-      // //button open
-      // let rem = document.createElement("button");
-      // rem.onclick = function () {
-      //   alert("1");
-      // };
-      // rem.innerHTML = '<i class="fa-solid fa-folder fa-beat"> </i>';
-      // newCell.appendChild(rem);
-
-      // //button eliminar
-      // rem = document.createElement("button");
-      // rem.onclick = function () {
-      //   alert("2");
-      // };
-      // rem.innerHTML = '<i class="fa-regular fa-trash-can fa-beat"></i>';
-      // newCell.appendChild(rem);
-
-      // //button editar
-      // rem = document.createElement("button");
-      // rem.onclick = function () {
-      //   alert("3");
-      // };
-      // rem.innerHTML = '<i class="fa-solid fa-pen-to-square fa-beat"></i>';
-      // newCell.appendChild(rem);
-
-      // sites.name; sites.user; sites.createdAt;
-      // let div = document.createElement("div");
-      // div.innerHTML = sites.name;
-      // laOStia.appendChild(div);
-
       let tr = document.createElement("tr");
 
       //Site
       let td = document.createElement("td");
+      td.classList.add("align-middle");
       td.innerText = sites.name;
       tr.appendChild(td);
 
@@ -137,10 +112,39 @@ function getSitesByCategory(id) {
       td.innerText = sites.createdAt;
       tr.appendChild(td);
 
-      //Icons PENDING
-      // td = document.createElement("td");
-      // td.innerText = sites.createdAt;
-      // tr.appendChild(td);
+      // Icons PENDING
+      td = document.createElement("td");
+      let boton = document.createElement("button");
+
+      // abrir
+      boton.onclick = function () {
+        alert("1");
+      };
+      boton.innerHTML = '<i class="fa-solid fa-folder fa-beat"> </i>';
+      td.appendChild(boton);
+
+      // eliminar
+      boton = document.createElement("button");
+      boton.onclick = function () {
+        alert("2");
+      };
+      boton.innerHTML = '<i class="fa-regular fa-trash-can fa-beat"></i>';
+      td.appendChild(boton);
+
+      // editar
+      boton = document.createElement("button");
+      boton.onclick = function () {
+        alert("1");
+      };
+      boton.innerHTML = '<i class="fa-solid fa-pen-to-square fa-beat"></i>';
+      td.appendChild(boton);
+
+
+      tr.appendChild(td);
+
+
+
+
 
       parent.appendChild(tr); //añade una columna
 
@@ -171,10 +175,6 @@ function getSitesByCategory(id) {
       // };
       // rem.innerHTML = '<i class="fa-solid fa-pen-to-square fa-beat"></i>';
       // newCell.appendChild(rem);
-
-
-
-
     });
   };
 
