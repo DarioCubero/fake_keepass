@@ -3,10 +3,6 @@ body {
 }
 
 /* tabla */
-tr.rowthead th {
-  width: 100px !important;
-}
-
 .rowthead {
   font-weight: bold;
   font-size: 16px !important;
@@ -15,23 +11,16 @@ tr.rowthead th {
   vertical-align: middle;
 }
 
-/* Lista */
-/* quita el punto de las categorias */
-ul {
-  list-style-type: none;
+tbody tr td {
+  text-align: center;
+  vertical-align: middle;
 }
 
-ul#categorias {
-  padding: 0px;
+tr.rowthead th {
+  width: 100px !important;
 }
 
-.own-center {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-}
-
+/* List group https://getbootstrap.com/docs/5.0/components/list-group/  */
 #categorias button {
   border-style: groove;
   padding: 10px;
