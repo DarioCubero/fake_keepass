@@ -1,50 +1,10 @@
-h2{
-    margin-left: 10px;
-}
+
 section{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
-section .sitio{
-    width: 100%;
-    height: 60px;
-    margin-top: 20px;
-    margin-left: 90px;
-}
-section .url{
-    width: 100%;
-    height: 60px;
-    margin-left: 90px;
-}
-section .user{
-    width: 100%;
-    height: 60px;
-    margin-left: 90px;
-}
-section .pass{
-    width: 55%;
-    height: 60px;
-    margin-left: 90px;
-    margin-top: 10px;
-}
-section .img{
-    width: 4%;
-    background-color: #D0D7D8;
-    height: 50px;
-}
-section .desc{
-    width: 100%;
-    height: 60px;
-    margin-left: 90px;
-}
-section .botones{
-    width: 100%;
-    margin-top: 210px;
-    margin-left: 280px;
-    height: 40px;
-    
-}
+
 .boton_cancelar{
     background-color: red;
     color:antiquewhite;
@@ -53,6 +13,7 @@ section .botones{
 
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 30px;
     
 }
 .boton_guardar{
@@ -65,11 +26,12 @@ section .botones{
     padding-right: 15px;
 
     margin-left: 20px;
+    margin-top: 30px;
 }
-.txtfield{
-    width: 600px;
-}
-.txtfield2{
-    width: 800px;
-    height: 200px;
+.keyrandom{
+    height: 48px;
+    width: 48px;
+    background-image: url(key.png);
+    border: none;
+    margin-top: 10px;
 }

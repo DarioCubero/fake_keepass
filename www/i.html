@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-		
-        <title> 
-Generador De Contraseñas
-</title>
-<p>No hay un máximo de caracteres, pero no se recomiendan mas de 25.</p>
-<p>Los numeros de generación de contraseñas siempre deben ser mayor que </p>
-<p>Ninguna de las contraseñas generadas se almacenan en este sitio web</p>
-<p>El sitio web es totalmente seguro</p>
-<p> Hecho Por Samuel (JavS15)</p>
-<script type="text/javascript">
-function generar(longitud)
-{
-  long=parseInt(longitud);
-  var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
-  var contraseña = "";
-  for (i=0; i<long; i++) contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
-  document.getElementById("pass").innerHTML=contraseña;
-}
-</script>
-<p id="pass"></p>
-<form id="Form" name="aleatorio" method="post" action="javascript:generar(document.aleatorio.long.value)" >
-<input name="long" type="number" id="texto" autocomplete="o" placeholder="Longitud de la contraseña" required="">
-<button type="submit" >Generar la contraseña indicada</button>
-</form>
-    </head>
-    <body>
-    </body>
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>
+    Generador De Contraseñas
+  </title>
+
+  
+
+  <script type="text/javascript">
+    function generar2() {
+      long = 8;
+      var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+      var contraseña = "";
+      for (i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+      document.getElementById("pass2").value = contraseña;
+    }
+  </script>
+</head>
+<body>
+  
+  <form id="Form2" name="aleatorio2" method="post" action="javascript:generar2()">
+    <label for="pass">Contraseña:</label>
+    <input type="text" class="form-control" name="pass2" id="pass2" placeholder="Ingresa contraseña del sitio">
+    <button type="submit" name="" class="keyrandom" title="Generación automática de contraseña"></button>
+  </form>
+</body>
+
 </html>
