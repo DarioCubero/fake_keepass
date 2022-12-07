@@ -1,8 +1,6 @@
 getCategories();
- 
-$(document).ready(function() {
 
-});
+$(document).ready(function () {});
 
 // START
 function getCategories() {
@@ -10,12 +8,12 @@ function getCategories() {
   let busquedaCategorias = (data) => {
     data.forEach((category) => {
       let parent = document.getElementById("categorias");
-      let button = document.createElement("button")
+      let button = document.createElement("button");
       button.classList.add("list-group-item", "list-group-item-action");
       button.innerText = category.name;
       // button.data-bs-toggle="list";
-      button.setAttribute('data-bs-toggle', 'list');
-      button.type="button";
+      button.setAttribute("data-bs-toggle", "list");
+      button.type = "button";
       button.id = category.id; //Añade el ID en cada elemento del LI.
       button.addEventListener("click", function (event) {
         getSitesByCategory(category.id);
@@ -43,25 +41,22 @@ function getSitesByCategory(id) {
     data.forEach((sites) => {
       let tr = document.createElement("tr"); //Creamos una fila por cada 'Site'
       let td = document.createElement("td"); //y vamos creando las columnas...
-      
+
       td.innerText = sites.name;
       tr.appendChild(td);
 
       //User
       td = document.createElement("td");
-      
       td.innerText = sites.user;
       tr.appendChild(td);
 
       //Created At
       td = document.createElement("td");
-      
       td.innerText = sites.createdAt;
       tr.appendChild(td);
 
       // Icons PENDING
       td = document.createElement("td");
-      
       let boton = document.createElement("button");
 
       // abrir
@@ -74,7 +69,7 @@ function getSitesByCategory(id) {
       // eliminar
       boton = document.createElement("button");
       boton.onclick = function () {
-        alert("2"); 
+        alert("2");
       };
       boton.innerHTML = '<i class="fa-regular fa-trash-can fa-beat"></i>';
       td.appendChild(boton);

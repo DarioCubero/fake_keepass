@@ -23,6 +23,7 @@ async function addNewSite(req, res) {
   result.categoryId = req.params.id
   await result.save()
   res.send(result)
+  console.log(result)
 }
 
 async function addNewCategory(req, res) {
