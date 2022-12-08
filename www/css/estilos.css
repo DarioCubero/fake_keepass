@@ -1,3 +1,5 @@
+/* generales */
+
 body {
   padding: 100px;
 }
@@ -38,8 +40,7 @@ tr.rowthead th {
   -moz-transition: width 1s ease-in-out, color 1s, font-size 1s;
   -o-transition: width 1s ease-in-out, color 1s, font-size 1s;
   transition: width 1s ease-in-out, color 1s, font-size 1s;
-  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s,
-    transform 0.2s;
+  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s, transform 0.2s;
 }
 
 #categorias button:hover {
@@ -52,8 +53,7 @@ tr.rowthead th {
   -moz-transition: width 1s ease-in-out, color 1s, font-size 1s;
   -o-transition: width 1s ease-in-out, color 1s, font-size 1s;
   transition: width 1s ease-in-out, color 1s, font-size 1s;
-  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s,
-    transform 0.2s;
+  transition: width 1s, height 1s, font-size 0.2s, background-color 0.2s, transform 0.2s;
 }
 
 #categorias button:active {
@@ -68,4 +68,13 @@ tr.rowthead th {
   color: rgb(255, 255, 255) !important;
   font-size: 18px !important;
   font-weight: bold !important;
+}
+
+/* createSite */
+.keyrandom {
+  height: 48px;
+  width: 48px;
+  background-image: url(/imgs/key.png);
+  border: none;
+  margin-top: 10px;
 }

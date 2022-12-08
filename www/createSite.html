@@ -4,25 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/estilos2.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
       crossorigin="anonymous"
-    />
-    <title>Fake Keepass</title>
+      referrerpolicy="no-referrer" />
+
+    <!-- JS -->
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"></script>
+    <!-- <script type="module" src="js/script.js"></script> -->
 
     <script type="text/javascript">
       function generar2() {
         long = 8;
-        var caracteres =
-          "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+        var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
         var contraseña = "";
-        for (i = 0; i < long; i++)
-          contraseña += caracteres.charAt(
-            Math.floor(Math.random() * caracteres.length)
-          );
+        for (i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
         document.getElementById("pass2").value = contraseña;
       }
     </script>
@@ -31,71 +45,36 @@
     <main>
       <h2>Creador de nuevo sitio</h2>
       <div class="container p-4">
-        <form class="card card-body" id="miForm" action="" method="POST">
+        <form>
           <div class="form-group">
             <label for="sitio">Sitio:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="sitio"
-              id="sitio"
-              placeholder="Ingresa nombre del sitio"
-            />
+            <input type="text" class="form-control" name="sitio" id="sitio" placeholder="Ingresa nombre del sitio" />
           </div>
 
           <div class="form-group">
             <label for="url">URL:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="url"
-              id="url"
-              placeholder="Ingresa url del sitio"
-            />
+            <input type="text" class="form-control" name="url" id="url" required placeholder="Ingresa url del sitio" />
           </div>
 
           <div class="form-group">
             <label for="user">Usuario:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="user"
-              id="user"
-              placeholder="Ingresa nombre del usuario"
-            />
+            <input type="text" class="form-control" name="user" id="user" placeholder="Ingresa nombre del usuario" />
           </div>
 
           <div class="form-group">
             <label for="pass">Contraseña:</label>
-            <input
-              type="text"
-              class="form-control"
-              name="pass2"
-              id="pass2"
-              placeholder="Ingresa contraseña del sitio"
-            />
-            <button
-              onclick="generar2()"
-              class="keyrandom"
-              title="Generación automática de contraseña"
-            ></button>
+            <input type="text" class="form-control" name="pass2" id="pass2" placeholder="Ingresa contraseña del sitio" />
+            <button onclick="generar2()" class="keyrandom" title="Generación automática de contraseña"></button>
           </div>
 
           <div class="form-group">
             <label for="desc">Descripción:</label>
-            <textarea
-              name="desc"
-              id="desc"
-              rows="10"
-              class="form-control"
-            ></textarea>
+            <textarea name="desc" id="desc" rows="10" class="form-control"></textarea>
           </div>
 
           <div class="form-group">
-            <button value="CANCELAR" class="boton_cancelar">CANCELAR</button>
-            <button type="submit" value="GUARDAR" class="boton_guardar">
-                GUARDAR
-              </button>
+            <a type="button" href="index.html" class="btn btn-danger">CANCELAR</a>
+            <button type="submit" class="btn btn-primary">GUARDAR</button>
           </div>
         </form>
       </div>

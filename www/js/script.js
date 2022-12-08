@@ -2,6 +2,10 @@ getCategories();
 
 $(document).ready(function () {});
 
+function limpiarTabla() {
+  $("#tbodyid").empty();
+}
+
 // START
 function getCategories() {
   // GET categorias
@@ -17,6 +21,7 @@ function getCategories() {
       button.id = category.id; //Añade el ID en cada elemento del LI.
       button.addEventListener("click", function (event) {
         getSitesByCategory(category.id);
+        setHrefCreateSite(category.id);
       });
       parent.appendChild(button);
     });
@@ -24,10 +29,6 @@ function getCategories() {
   fetch("http://localhost:3000/categories")
     .then((res) => res.json())
     .then((data) => busquedaCategorias(data));
-}
-
-function limpiarTabla() {
-  $("#tbodyid").empty();
 }
 
 function getSitesByCategory(id) {
@@ -91,3 +92,12 @@ function getSitesByCategory(id) {
     .then((res) => res.json())
     .then((data) => busquedaSitesByCategory(data));
 }
+
+function setHrefCreateSite(id) {
+  let boton = document.getElementById("buttonSite");
+  boton.href = "createSite.html?site=" + id;
+}
+
+// var url = new URL(url_string);
+// var c = url.searchParams.get("c");
+// console.log(c);
