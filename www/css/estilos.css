@@ -74,7 +74,7 @@ tr.rowthead th {
 .keyrandom {
   height: 48px;
   width: 48px;
-  background-image: url(/imgs/key.png);
+  background-image: url(imgs/key.png);
   border: none;
   margin-top: 10px;
 }

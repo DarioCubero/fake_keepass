@@ -38,4 +38,21 @@ function guardarSite(){
    
    var jsonString= JSON.stringify(sitio);
    console.log(jsonString);
+
+   let url2 = "http://localhost:3000/categories/:id'";
+
+async function makePostRequest(url2, requestType ){
+    await fetch(
+        url2,
+        {
+            method: requestType,
+            body: JSON.stringify(jsonString)
+        },
+    ).then(async rawResponse =>{
+        var content = await rawResponse.json()
+        console.log(content);
+    });
+}
+
+makePostRequest(url2, "POST");
 }
