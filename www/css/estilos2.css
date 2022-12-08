@@ -31,7 +31,7 @@ section{
 .keyrandom{
     height: 48px;
     width: 48px;
-    background-image: url(key.png);
+    background-image: url(/imgs/key.png);
     border: none;
     margin-top: 10px;
 }
