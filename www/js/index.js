@@ -1,6 +1,7 @@
-getCategories();
-
-$(document).ready(function () {});
+// Cargamos las categorías
+$(document).ready(function () {
+  getCategories();
+});
 
 function limpiarTabla() {
   $("#tbodyid").empty();
@@ -21,7 +22,7 @@ function getCategories() {
       button.id = category.id; //Añade el ID en cada elemento del LI.
       button.addEventListener("click", function (event) {
         getSitesByCategory(category.id);
-        setHrefCreateSite(category.id);
+        // setHrefCreateSite(category.id); //Modificamos el href del botón "createSite" cuando esté clickada una categoría
       });
       parent.appendChild(button);
     });
@@ -38,7 +39,9 @@ function getSitesByCategory(id) {
   let parent = document.getElementsByTagName("tbody")[0];
   parent.innerHTML = "";
 
+  // Creamos la tabla de sitios
   let busquedaSitesByCategory = (data) => {
+    
     data.forEach((sites) => {
       let tr = document.createElement("tr"); //Creamos una fila por cada 'Site'
       let td = document.createElement("td"); //y vamos creando las columnas...
@@ -88,16 +91,15 @@ function getSitesByCategory(id) {
     });
   };
 
-  fetch("http://localhost:3000/categories/" + id) //nos devuelve los sitios de esa
+  fetch("http://localhost:3000/categories/" + id) // Sitios de una categoría
     .then((res) => res.json())
     .then((data) => busquedaSitesByCategory(data));
 }
 
-function setHrefCreateSite(id) {
-  let boton = document.getElementById("buttonSite");
-  boton.href = "createSite.html?site=" + id;
-}
+// function setHrefCreateSite(id) {
+//   let boton = document.getElementById("buttonSite");
+//   boton.href = "createSite.html?site=" + id;
+// }
 
-// var url = new URL(url_string);
-// var c = url.searchParams.get("c");
-// console.log(c);
+
+
