@@ -23,8 +23,8 @@ $(document).ready(function () {
     for (let i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     document.getElementById("pass").value = contraseña;
   });
-  
-  document.getElementById("botonGuardarSite").addEventListener("click", function () {
+
+  document.getElementById("form").addEventListener("submit", function (event) {
     let site = document.getElementById("sitio").value;
     let url = document.getElementById("url").value;
     let user = document.getElementById("user").value;
@@ -53,5 +53,7 @@ $(document).ready(function () {
       });
     }
     makePostRequest(url2, "POST");
+    event.preventDefault(); // Previene que al realizar el submit, se refresque la página
   });
+
 });
