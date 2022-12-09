@@ -14,17 +14,8 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script type="module" src="js/sites.js"></script>
-
-    <script type="text/javascript">
-      function generar2() {
-        long = 8;
-        var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
-        var contraseña = "";
-        for (i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-        document.getElementById("pass2").value = contraseña;
-      }
-    </script>
+    <script src='js/sites.js'></script>
+    <title>Create Site</title>
   </head>
   <body>
     <main>
@@ -48,8 +39,8 @@
 
           <div class="form-group">
             <label for="pass">Contraseña:</label>
-            <input type="text" class="form-control" name="pass2" id="pass2" placeholder="Ingresa contraseña del sitio" />
-            <button onclick="generar2()" class="keyrandom" title="Generación automática de contraseña"></button>
+            <input type="text" class="form-control" name="pass" id="pass" placeholder="Ingresa contraseña del sitio" required/>
+            <button onclick="generar();" type="button" id="keyrandom" class="keyrandom" title="Generación automática de contraseña"></button>
           </div>
 
           <div class="form-group">

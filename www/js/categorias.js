@@ -1,3 +1,10 @@
+$(document).ready(function () {
+  //cuando se cierra el modal limpia el input
+  document.getElementById("modalNewCategory").addEventListener("hidden.bs.modal", () => {
+    document.getElementById("name-text").value = "";
+  });
+});
+
 // MODAL
 $("#modalNewCategory").on("click", "#paramsOkay", function () {
   //Le pasamos una lista con los valores del objeto
@@ -9,11 +16,6 @@ $("#modalNewCategory").on("click", "#paramsOkay", function () {
   });
 
   $("#modalNewCategory").modal("toggle");
-});
-
-//cuando se cierra el modal limpia el input
-document.getElementById("modalNewCategory").addEventListener("hidden.bs.modal", () => {
-  document.getElementById("name-text").value = "";
 });
 
 // CREAR CATEGORÍA
@@ -35,9 +37,8 @@ let postCreateCategory = async (valuesList) => {
     // obtener cuerpo de la respuesta (método debajo)
     let json = await response.json();
     console.log("postCreateCategory/Response: ", json);
-    swal("Creación de categoría: " + valuesList[0].toUpperCase(), "OK!", "success")
-    .then((foo) => {
-        location.reload();
+    swal("Creación de categoría: " + valuesList[0].toUpperCase(), "OK!", "success").then((foo) => {
+      location.reload();
     });
   } else {
     swal("Creación de categoría: FALLIDA", "Status: " + response.status.toString(), "error");
@@ -59,47 +60,43 @@ function isCategorySelected() {
 }
 
 $("#botonBorrarCategoria").on("click", function () {
-  let [selected,
-    id, catSelectedText] = isCategorySelected();
+  let [selected, id, catSelectedText] = isCategorySelected();
   if (selected) {
     // BORRAR CATEGORIA
     swal({
-        title: "Borrar categoría: " + catSelectedText.toUpperCase(),
-        text: "Estás segur@? No podrás recuperarla!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-            fetch("http://localhost:3000/categories/" + id, {
-                method: "DELETE",
-              })
-                .then((res) => res.text()) // or res.json()
-                .then((res) => console.log(res));
-          swal(catSelectedText.toUpperCase() + " ha sido borrada!", {
-            icon: "success",
-          })
-          .then((foo) => {
-            location.reload();
+      title: "Borrar categoría: " + catSelectedText.toUpperCase(),
+      text: "Estás segur@? No podrás recuperarla!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch("http://localhost:3000/categories/" + id, {
+          method: "DELETE",
+        })
+          .then((res) => res.text()) // or res.json()
+          .then((res) => console.log(res));
+        swal(catSelectedText.toUpperCase() + " ha sido borrada!", {
+          icon: "success",
+        }).then((foo) => {
+          location.reload();
         });
-        } else {
-          swal("Borrado de categoría cancelado.");
-          $("#"+id).removeClass("active"); 
-        }
-      });
-  }else{
+      } else {
+        swal("Borrado de categoría cancelado.");
+        $("#" + id).removeClass("active");
+      }
+    });
+  } else {
     swal("¿Cual borramos?", "Prueba a seleccionar una categoría...", "warning");
   }
 });
 
 $("#botonCrearSite").on("click", function () {
-    let [selected,
-        id] = isCategorySelected();
+  let [selected, id] = isCategorySelected();
 
   if (selected) {
-    window.location = 'createSite.html?site='+id;
-  }else{
+    window.location = "createSite.html?site=" + id;
+  } else {
     swal("¿Dónde añadimos?", "Prueba a seleccionar una categoría...", "warning");
   }
 });
