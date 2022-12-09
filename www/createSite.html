@@ -24,36 +24,37 @@
         <form>
           <div class="form-group">
             <label for="sitio">Sitio:</label>
-            <input type="text" class="form-control" name="sitio" id="sitio" placeholder="Ingresa nombre del sitio" />
+            <input type="text" class="form-control" name="sitio" id="sitio" placeholder="Ingresa nombre del sitio" required/>
           </div>
 
           <div class="form-group">
             <label for="url">URL:</label>
-            <input type="text" class="form-control" name="url" id="url" required placeholder="Ingresa url del sitio" />
+            <input type="text" class="form-control" name="url" id="url"  placeholder="Ingresa url del sitio" />
           </div>
 
           <div class="form-group">
             <label for="user">Usuario:</label>
-            <input type="text" class="form-control" name="user" id="user" placeholder="Ingresa nombre del usuario" />
+            <input type="text" class="form-control" name="user" id="user" placeholder="Ingresa nombre del usuario" required />
           </div>
 
           <div class="form-group">
             <label for="pass">Contraseña:</label>
             <input type="text" class="form-control" name="pass" id="pass" placeholder="Ingresa contraseña del sitio" required/>
-            <button onclick="generar();" type="button" id="keyrandom" class="keyrandom" title="Generación automática de contraseña"></button>
+            <button type="button" id="keyrandom" class="keyrandom" title="Generación automática de contraseña"></button>
           </div>
 
           <div class="form-group">
             <label for="desc">Descripción:</label>
             <textarea name="desc" id="desc" rows="10" class="form-control"></textarea>
-          </div>
+          </div><br>
 
           <div class="form-group">
             <a type="button" href="index.html" class="btn btn-danger">CANCELAR</a>
-            <button type="submit" class="btn btn-primary">GUARDAR</button>
+            <button id="botonGuardarSite" type="button" class="btn btn-primary">GUARDAR</button>
           </div>
         </form>
       </div>
     </main>
   </body>
+</html>
 </html>
