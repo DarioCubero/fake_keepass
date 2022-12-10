@@ -4,6 +4,16 @@ body {
   padding: 100px;
 }
 
+i.site-icon{
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+}
+i.site-icon:hover{
+  cursor: pointer;
+  color: #0d6efd;
+}
+
 /* tabla */
 .rowthead {
   font-weight: bold;

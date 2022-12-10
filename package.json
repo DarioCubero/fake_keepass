@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "db:init": "sequelize-cli db:migrate && sequelize-cli db:seed:all",
-    "www": "live-server www/"
+    "www": "live-server www/",
+    "pararservicios": "taskkill /im node.exe /F && sequelize-cli db:migrate && sequelize-cli db:seed:all && echo live-server www/ && node index.js",
+    "db:init": "sequelize-cli db:migrate && sequelize-cli db:seed:all"
   },
   "author": "",
   "license": "ISC",

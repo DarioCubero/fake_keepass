@@ -9,32 +9,31 @@ $(document).ready(function () {
   // START
   function getCategories() {
     // GET categorias
-    let busquedaCategorias = (data) => {
-      data.forEach((category) => {
-        let parent = document.getElementById("categorias");
-        let button = document.createElement("button");
-        button.classList.add("list-group-item", "list-group-item-action");
-        button.innerText = category.name;
-        // button.data-bs-toggle="list";
-        button.setAttribute("data-bs-toggle", "list");
-        button.type = "button";
-        button.id = category.id; //Añade el ID en cada elemento del LI.
-        button.addEventListener("click", function (event) {
-          getSitesByCategory(category.id);
-          // setHrefCreateSite(category.id); //Modificamos el href del botón "createSite" cuando esté clickada una categoría
-        });
-        parent.appendChild(button);
-      });
-    };
     fetch("http://localhost:3000/categories")
       .then((res) => res.json())
       .then((data) => busquedaCategorias(data));
   }
 
-  function getSitesByCategory(id) {
+  let busquedaCategorias = (data) => {
+    data.forEach((category) => {
+      let parent = document.getElementById("categorias");
+      let button = document.createElement("button");
+      button.classList.add("list-group-item", "list-group-item-action");
+      button.innerText = category.name;
+      // button.data-bs-toggle="list";
+      button.setAttribute("data-bs-toggle", "list");
+      button.type = "button";
+      button.id = category.id; //Añade el ID en cada elemento del LI.
+      button.addEventListener("click", function (event) {
+        crearTablaIndex(category.id);
+      });
+      parent.appendChild(button);
+    });
+  };
+
+  function crearTablaIndex(id) {
     limpiarTabla();
     //devuelve los sitios de una categoria
-
     let parent = document.getElementsByTagName("tbody")[0];
     parent.innerHTML = "";
 
@@ -59,30 +58,34 @@ $(document).ready(function () {
 
         // Icons PENDING
         td = document.createElement("td");
-        let boton = document.createElement("button");
+        let ahref = document.createElement("a");
 
         // abrir
-        boton.onclick = function () {
-          alert("1");
-        };
-        boton.innerHTML = '<i class="fa-solid fa-folder fa-beat"> </i>';
-        td.appendChild(boton);
+        ahref.href = sites.url;
+        ahref.setAttribute("target", "_blank");
+        ahref.innerHTML = '<i class="site-icon fa-regular fa-folder"> </i>';
+        td.appendChild(ahref);
 
         // eliminar
-        boton = document.createElement("button");
-        boton.onclick = function () {
-          alert("2");
+        ahref = document.createElement("a");
+        ahref.onclick = function () {
+          // BORRAR CATEGORÍA
+          console.log('ICON BORRAR CATEGORIA');
+          fetch("http://localhost:3000/sites/" + sites.id, {
+            method: "DELETE",
+          });
+          location.reload();
         };
-        boton.innerHTML = '<i class="fa-regular fa-trash-can fa-beat"></i>';
-        td.appendChild(boton);
+        ahref.innerHTML = '<i class="site-icon fa-regular fa-trash-can"></i>';
+        td.appendChild(ahref);
 
         // editar
-        boton = document.createElement("button");
-        boton.onclick = function () {
-          alert("1");
+        ahref = document.createElement("a");
+        ahref.onclick = function () {
+          window.location = "site.html?site=" + sites.id + "&category=" + sites.categoryId;
         };
-        boton.innerHTML = '<i class="fa-solid fa-pen-to-square fa-beat"></i>';
-        td.appendChild(boton);
+        ahref.innerHTML = '<i class="site-icon fa-solid fa-pen-to-square"></i>';
+        td.appendChild(ahref);
 
         tr.appendChild(td); //Insertamos columnas en la fila
         parent.appendChild(tr); //Añadimos la fila al tbody
@@ -94,8 +97,71 @@ $(document).ready(function () {
       .then((data) => busquedaSitesByCategory(data));
   }
 
-  // function setHrefCreateSite(id) {
-  //   let boton = document.getElementById("buttonSite");
-  //   boton.href = "createSite.html?site=" + id;
-  // }
+  function isCategorySelected() {
+    let catSelectedId = $("#categorias button.active").attr("id"); //ID DE LA CATEGORÍA SELECCIONADA
+    let catSelectedText = $("#categorias button.active").html(); //NOMBRE DE LA CATEGORÍA SELECCIONADA
+    let values;
+    if (typeof catSelectedId !== "undefined") {
+      values = [true, catSelectedId, catSelectedText];
+    } else {
+      values = [false];
+    }
+    return values;
+  }
+
+  // AÑADIR SITIO
+  $("#botonCrearSite").on("click", function () {
+    let [selected, id] = isCategorySelected();
+
+    if (selected) {
+      window.location = "site.html?category=" + id;
+    } else {
+      swal(
+        "¿Dónde añadimos?",
+        "Prueba a seleccionar una categoría...",
+        "warning"
+      );
+    }
+  });
+
+  $("#botonBorrarCategoria").on("click", function () {
+    let [selected, categoryId, catSelectedText] = isCategorySelected();
+    if (selected) {
+      swal({
+        title: "Borrar categoría: " + catSelectedText.toUpperCase(),
+        text: "Estás segur@? No podrás recuperarla!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          console.log("Borrado de Categoría: " + catSelectedText);
+          borrarCategoria(categoryId); 
+          swal(catSelectedText.toUpperCase() + " ha sido borrada!", {
+            icon: "success",
+          }).then((foo) => {
+            location.reload();
+          });
+        } else {
+          swal("Borrado de categoría cancelado.");
+          $("#" + categoryId).removeClass("active");
+        }
+      });
+    } else {
+      swal(
+        "¿Cual borramos?",
+        "Prueba a seleccionar una categoría...",
+        "warning"
+      );
+    }
+  });
+
+  //Borrado Async de Categoría
+  async function borrarCategoria(categoryId) {
+    //Delete Category
+    await fetch("http://localhost:3000/categories/" + categoryId, {
+      method: "DELETE",
+    })
+  }
+
 });
