@@ -10,13 +10,23 @@ $(document).ready(function () {
   $("#modalNewCategory").on("click", "#paramsOkay", function () {
     //Le pasamos una lista con los valores del objeto
     let nombre = document.getElementById("name-text").value;
-    let valuesList = [nombre];
+    //Comprobamos campo vacio
+    if (nombre == ""){
+      document.getElementById("alerta-txt-vacio").style.display = "block";
+    }else{
+      let valuesList = [nombre];
 
     postCreateCategory(valuesList).then((data) => {
       console.log("postCreateCategory/Data: ", data);
     });
 
     $("#modalNewCategory").modal("toggle");
+    }
+    
+  });
+  //Ocultamos aviso
+  $("#modalNewCategory").on("click", "#paramsCancel", function () {
+    document.getElementById("alerta-txt-vacio").style.display = "none";
   });
 
   // CREAR CATEGORÍA
