@@ -4,18 +4,20 @@ $(document).ready(function () {
   let valor = "";
   document.getElementById("pass").value = valor;
 
-  function getParams() {
+  //Recogemos id de la categoria seleccionada
+  function getParams(idSite) {
     if (hasQueryParams()) {
       let urlParams = new URLSearchParams(window.location.search);
       let idSite = urlParams.get("site");
-      // alert("Parámetro recogido de la URL: " + idSite);
+      alert("Parámetro recogido de la URL: " + idSite);
     }
+    return idSite;
   }
 
   function hasQueryParams(url) {
     return window.location.href.indexOf("?") > -1;
   }
-
+  //Creamos una contraseña aleatoria
   document.getElementById("keyrandom").addEventListener("click", function () {
     let long = 8;
     let caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
@@ -41,7 +43,7 @@ $(document).ready(function () {
     let jsonString = JSON.stringify(sitio);
     console.log(jsonString);
 
-    let url2 = "http://localhost:3000/categories/:id'";
+    let url2 = "http://localhost:3000/categories/"+ get;
 
     async function makePostRequest(url2, requestType) {
       await fetch(url2, {
